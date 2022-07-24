@@ -1,15 +1,13 @@
-﻿
-namespace JuniorHomeWork
+﻿namespace JuniorHomeWork
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             int lenghtArray = 0;
-            int[] numbers = {lenghtArray};
-            int[] numbersCopy = {lenghtArray};
+            int[] numbers = { lenghtArray };
+            int[] numbersCopy = { lenghtArray };
             bool exit = false;
-            int sum = 0;
 
             for (int i = 0; i < numbers.Length; i++)          // Вывод стартового массива
             {
@@ -21,21 +19,9 @@ namespace JuniorHomeWork
                 Console.WriteLine("Введите число, команду sum, чтобы сложить значения ввода или команду exit, чтобы выйти.");
                 string userInput = Console.ReadLine();
 
-                if (userInput != "sum" && userInput != "exit")
+                if (userInput == "sum")                                      // Проверка на сумму
                 {
-                    int convertStringToNumber = Convert.ToInt32(userInput);
-
-                    for (int i = 0; i < numbersCopy.Length; i++)
-                    {
-                        numbersCopy[i] = numbers[i];
-                    }
-
-                    numbersCopy[numbers.Length - 1] += convertStringToNumber;
-                    numbersCopy = numbers;
-                }
-
-                else if (userInput == "sum")
-                {
+                    int sum = 0;
 
                     for (int i = 0; i < numbers.Length; i++)
                     {
@@ -45,7 +31,7 @@ namespace JuniorHomeWork
                     Console.WriteLine("Сумма элементов равна: " + sum);
                 }
 
-                else if (userInput == "exit")
+                else if (userInput == "exit")                               // Проверка на выход из программы
                 {
                     Console.Clear();
                     exit = true;
@@ -53,9 +39,21 @@ namespace JuniorHomeWork
                     Console.WriteLine("До свидания!");
                 }
 
-            }
+                else                                                       // Добавление пользовательских значений в массив
+                {
+                    int convertStringToNumber = Convert.ToInt32(userInput);
+
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        numbersCopy[i] = numbers[i];
+                    }
+
+                    numbersCopy[numbers.Length - 1] += convertStringToNumber;
+                    numbers = numbersCopy;
+                }
+
             }
         }
-
     }
 
+}
