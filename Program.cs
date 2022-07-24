@@ -4,22 +4,17 @@
     {
         static void Main(string[] args)
         {
-            int lenghtArray = 0;
-            int[] numbers = { lenghtArray };
-            int[] numbersCopy = { lenghtArray };
+            int[] numbers = {0};
             bool exit = false;
-
-            for (int i = 0; i < numbers.Length; i++)          // Вывод стартового массива
-            {
-                Console.WriteLine("Исходные значения массива: " + numbers[i] + ". Длина массива: " + numbers.Length);
-            }
+            string sumCommand = "sum";
+            string exitCommand = "exit";
 
             while (exit != true)
             {
                 Console.WriteLine("Введите число, команду sum, чтобы сложить значения ввода или команду exit, чтобы выйти.");
                 string userInput = Console.ReadLine();
 
-                if (userInput == "sum")                                      // Проверка на сумму
+                if (userInput == sumCommand)                                      
                 {
                     int sum = 0;
 
@@ -28,20 +23,19 @@
                         sum += numbers[i];
                     }
 
-                    Console.WriteLine("Сумма элементов равна: " + sum);
+                    Console.WriteLine(sumCommand + " элементов равна: " + sum);
                 }
-
-                else if (userInput == "exit")                               // Проверка на выход из программы
+                else if (userInput == exitCommand)                               
                 {
                     Console.Clear();
                     exit = true;
                     Console.SetCursorPosition(50, 5);
-                    Console.WriteLine("До свидания!");
+                    Console.WriteLine(exitCommand);
                 }
-
-                else                                                       // Добавление пользовательских значений в массив
+                else                                                       
                 {
                     int convertStringToNumber = Convert.ToInt32(userInput);
+                    int[] numbersCopy = { 0 };
 
                     for (int i = 0; i < numbers.Length; i++)
                     {
